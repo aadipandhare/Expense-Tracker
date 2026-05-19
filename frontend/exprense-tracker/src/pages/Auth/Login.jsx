@@ -1,7 +1,12 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import {AuthLayout} from "../../components/layouts/AuthLayout.jsx"
 import { Input} from "../../components/Input/Input.jsx";
 import {Link, useNavigate } from "react-router-dom"
+import API_PATHS from '../../utils/apiPaths.js'
+import {BASE_URL} from '../../utils/apiPaths.js'
+import {axiosInstance} from '../../utils/axiosinstance.js'
+import {validateEmail} from '../../utils/helper.js'
+import {UserContext} from '../../context/UserContext'
 
 export const Login = () => {
 
@@ -9,7 +14,11 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit=()=>{
+  const {updateUser}= useContext(UserContext)
+  
+  const navigate = useNavigate();
+
+  const handleSubmit= async (e)=>{
     e.preventDefault();
 
     if(!validateEmail(email)){
@@ -22,7 +31,31 @@ export const Login = () => {
       return
     }
 
-    setError("")
+    setError("");
+
+    //Login API Call
+    try {
+      
+      const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN ,{email,password})
+      const {token, user} = response.data;
+
+      if(token){
+        localStorage.setItem("token",token);
+        updateUser(user)
+        navigate('/dashboard')
+      }
+
+    } catch (error) {
+        console.log("FULL ERROR:", error);
+
+      if(error.response && error.response.data.message){
+        setError(error.response.data.message);
+      }else{
+        console.log(error.message)
+        setError("Something went wrong")
+      }
+    }
+
   }
 
   return (
@@ -45,7 +78,7 @@ export const Login = () => {
           type="password"
           label= 'Password'
           placeholder="Min 8 Characters"
-          value={email}
+          value={password}
           onChange={(e)=>setPassword(e.target.value)}
            />
 

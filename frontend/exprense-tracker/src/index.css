@@ -21,3 +21,20 @@
 .input-box{
   @apply w-full flex bg-slate-100 justify-between gap-3 text-sm text-black rounded px-4 py-2 mt-2 mb-4 outline-none
 }
+
+.card{
+  @apply flex bg-white rounded-xl shadow-md shadow-gray-400 mt-5 border border-gray-100 w-1/2
+}
+
+.card-chart{
+  @apply flex bg-white rounded-xl shadow-md shadow-gray-400 mt-5 border border-gray-100 
+}
+
+
+.card-btn{
+  @apply flex items-center bg-gray-200 gap-3 text-sm font-medium text-gray-700 hover:text-purple-400 border border-gray-400 rounded-lg px-1 py-2 
+}
+
+.add-btn{
+  @apply flex items-center bg-purple-100 gap-3 text-sm font-medium text-violet-700 hover:text-violet-400 border border-gray-400 rounded-lg px-1 py-1
+}

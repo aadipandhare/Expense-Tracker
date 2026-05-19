@@ -1,13 +1,14 @@
 import React,{useState,useRef} from 'react'
 import { LuUser, LuUpload, LuTrash} from "react-icons/lu"
+import profile from '../../assets/profile.jpg'
 
-export const ProfilePhotoSelector = (image, setImage) => {
+export const ProfilePhotoSelector = ({image, setImage}) => {
 
     const inputRef = useRef(null)
     const [previewUrl, setPreviewUrl] = useState(null);
 
-    const handleImageChange=()=>{
-        const file = event.target.files[0];
+    const handleImageChange=(e)=>{
+        const file = e.target.files[0];
         
         if(file){
             setImage(file);
@@ -27,14 +28,46 @@ export const ProfilePhotoSelector = (image, setImage) => {
     }
 
   return (
-    <div>
+    <div className="flex justify-center mb-6">
         <input
             type="file"
             accept="image/*"
             ref={inputRef}
             onChange={handleImageChange}
-            className=""
+            className="hidden"
         />
+
+        {!image ? (
+            <div className="w-20 h-20 flex bg-purple-500 items-center justify-center rounded-full relative">
+                <LuUser className="text-4xl text-white"/>
+
+                <button
+                 type="button"
+                 className="w-8 h-8 items-center justify-center bg-primary text-white rounded-full  absolute -bottom-1"
+                 onClick={onChooseFile}
+                 
+                 >
+                    <LuUpload/>
+                 </button>
+            </div>
+        ):(
+            <div className="relative">
+                 <img
+                    src={previewUrl}
+                    alt="Profile photo"
+                    className="w-20 h-20 rounded-full object-cover "
+                    onClick={onChooseFile}
+                    />
+                    <button
+                     type="button"
+                     className="w-8 h-8 flex items-center justify-center bg-red-500 text-white rounded-full absolute -bottom-1 -right-1"
+                     onClick={handleRemoveImage}
+                     >
+                        <LuTrash/>
+                     </button>   
+            </div>
+
+        )}
     </div>
   )
 }
