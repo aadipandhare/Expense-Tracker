@@ -5,7 +5,6 @@ import cors from "cors"
 import authRouter from "./routes/authRoute.js"
 import incomeRouter from './routes/incomeRoute.js'
 import expenseRouter from './routes/expenseRoute.js'
-import dashboardRouter from './routes/dashboardRoute.js'
 
 import { fileURLToPath } from 'url';
 
@@ -22,13 +21,8 @@ connectDB();
 
 
 
-
 const app = express();
-
-
 const PORT = process.env.PORT || 5000;
-
-//db
 
 
 //middleware for handling cors
@@ -45,7 +39,7 @@ app.use("/api/auth",authRouter);
 app.use("/api/dashboard",dashBoardRouter)
 app.use("/api/income",incomeRouter)
 app.use("/api/expense",expenseRouter)
-app.use("/api/dashboard",dashBoardRouter)
+
 
 //Server uploads folder
 app.use("/uploads", express.static(path.join(__dirname,"uploads")));
