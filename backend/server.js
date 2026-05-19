@@ -34,7 +34,7 @@ app.use(
     })
 )
 
-app.option("*", cors())
+app.options("*", cors())
 
 app.use(express.json());
 app.use("/api/auth",authRouter);
