@@ -51,6 +51,11 @@ app.use("/api/dashboard",dashBoardRouter)
 app.use("/uploads", express.static(path.join(__dirname,"uploads")));
 
 
+
+app.get('/',(req,res)=>{
+    res.send("Hello")
+})
+
 app.listen(PORT, ()=>{
     console.log(`Server is running on port ${PORT}....`)
 })
