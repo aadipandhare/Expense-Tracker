@@ -1,5 +1,8 @@
-export const BASE_URL = "https://expense-tracker-1jbs.onrender.com"
+// export const BASE_URL = "https://expense-tracker-1jbs.onrender.com"
+export const BASE_URL = "http://localhost:8000"
 
+
+// local backend servers normally run on HTTP, not HTTPS.
 
 const API_PATHS = {
     AUTH :  {
