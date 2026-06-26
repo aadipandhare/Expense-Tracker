@@ -102,7 +102,7 @@ useEffect(() => {
 
       <div className='flex justify-between gap-8'>
          <ExpenseTransactions
-          transaction ={dashboardData?.last30DaysExpenses?.transaction.slice(0,5) || []}
+          transaction ={dashboardData?.last30DaysExpenses?.transaction || []}
           onSeeMore={()=> navigate('/expense')}
         />
         
