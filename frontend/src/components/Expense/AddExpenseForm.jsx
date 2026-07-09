@@ -11,11 +11,12 @@ export const AddExpenseForm = ({ onAddExpense }) => {
   });
 
   const handleChange = (key, value) => setExpense({ ...expense, [key]: value });
+
   return (
     <div>
-      <EmojiPickerPop
+      <EmojiPickerPop 
         icon={expense.icon}
-        onSelect={(selectedIcon ) => handleChange("icon", selectedIcon)}
+        onSelect={({selectedIcon})=> handleChange("icon", selectedIcon)}
         onChange={({target}) => handleChange("icon", target.value)}
       />
 

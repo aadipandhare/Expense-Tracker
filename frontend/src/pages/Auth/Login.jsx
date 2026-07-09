@@ -29,7 +29,7 @@ export const Login = () => {
     if(!password){
       setError("Please Enter valid Password")
       return
-    }
+    } 
 
     setError("");
 
@@ -39,9 +39,10 @@ export const Login = () => {
       const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN ,{email,password})
       const {token, user} = response.data;
 
+      console.log(response.data)
       if(token){
         localStorage.setItem("token",token);
-        updateUser(user)
+        updateUser(response.data.user)
         navigate('/dashboard')
       }
 
@@ -57,6 +58,7 @@ export const Login = () => {
     }
 
   }
+  
 
   return (
     <AuthLayout>

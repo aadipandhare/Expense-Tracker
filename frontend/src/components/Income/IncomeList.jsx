@@ -13,7 +13,7 @@ export const IncomeList = ({ transaction, onDelete, onDownload }) => {
         <div className="flex flex-1 justify-between p-3">
           <h5 className='text-lg'>Income Sources</h5>
 
-          <button className="add-btn">
+          <button className="add-btn" onClick={onDownload}>
             <BiDownload /> Download
           </button>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts'
-import {CustomToolTip} from './CustomToolTip'
+// import {CustomToolTip} from './CustomToolTip'
 
 export const CustomBarChart = ({data=[]}) => {
 
@@ -21,15 +21,15 @@ export const CustomBarChart = ({data=[]}) => {
         }
         return null;
     };
-    // console.log(data)
+    console.log(data)
 
   return (
-    <div className='bg-white mt-6'>
+    <div className='bg-white mt-6 w-full h-[300px]'>
         <ResponsiveContainer width='100%' height={300}>
             <BarChart data={data}>
                 <CartesianGrid stroke="none" />
 
-                <XAxis dataKey="month" tick={{ fontSize:12, fill: '#555'}} stroke="none"/>
+                <XAxis dataKey="amount" tick={{ fontSize:12, fill: '#555'}} stroke="none"/>
                 <YAxis tick={{fontSize: 12, fill:"#555"}} stroke="none"/>
 
                 <Tooltip content={<CustomToolTip/>}/>

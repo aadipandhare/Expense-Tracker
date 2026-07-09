@@ -8,7 +8,7 @@ export const RecentTransaction = ({transaction, onSeeMore}) => {
     <div className='card flex flex-col'>
         
         <div className='flex flex-1 items-center justify-between p-2'>
-            <h5 className='p-3 text-lg text-gray-800'>Recent Transaction</h5>
+            <h5 className='p-3 text-[25px] font-bold  text-gray-600'>Recent Transaction</h5>
             
             <button className="card-btn" onClick={onSeeMore}>
             Sell more <LuArrowRight />

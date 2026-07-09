@@ -44,12 +44,6 @@ export const IncomeOverview = ({ transaction, onAddIncome }) => {
       </div>
 
 
-
-
-    
-
-      
-
     </div>
 
     

@@ -29,18 +29,22 @@ useEffect(()=>{
 
   
   return (
-    <div className='card flex flex-1'>
-      <div className='flex-row items-center justify-between'>
-        <h5 className='text-lg text-gray-700'>Last60DaysIncome</h5>
+    <div className='card flex flex-1 flex-col rounded-2xl border border-gray-100 bg-white p-5'>
+      <div className='flex-row items-center justify-between mb-4'>
+        <h5 className=' text-[25px] font-bold text-gray-600 '>Last 60Days Income</h5>
       </div>
-
-      <CustomPieChart
+     
+{/* <h5 className='text-xl font-semibold text-gray-800 '>Last60DaysIncome</h5> */}
+      <div className='flex flex-1 item-center justify-center'>
+        <CustomPieChart
         data={chartData}
         label="Total Income"
         totalamount={`${totalIncome}`} 
         colors={COLORS}
         showTextAnchor
-      />
+        />
+      </div>
+      
 
 
     </div>

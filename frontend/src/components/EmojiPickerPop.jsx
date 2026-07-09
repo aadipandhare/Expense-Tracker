@@ -13,7 +13,7 @@ export const EmojiPickerPop = ({icon, onSelect}) => {
           className='flex items-center gap-4 cursor-pointer'
           onClick={() => {  if (!isOpen) setIsOpen(true)}}
         >
-            <div className='w-12 h-12 flex items-center justify-center text-2xl bg-purple-50 text-primary rounded-lg'>
+            <div className='w-12 h-12 items-center justify-center justi text-2xl bg-purple-100 text-primary rounded-lg'>
                 {icon ? (
                     <span className='w-12 h-12'>{icon}</span>
                 ) : (
@@ -34,7 +34,7 @@ export const EmojiPickerPop = ({icon, onSelect}) => {
 
                 <EmojiPicker
                   open={isOpen}
-                  onEmojiClick={(emojiData) => onSelect(emojiData.emoji || "")}
+                  onEmojiClick={(emojiData) => onSelect( {selectedIcon: emojiData.emoji })}
                 />
               </div>
             )}
