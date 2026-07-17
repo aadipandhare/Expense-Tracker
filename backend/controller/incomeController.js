@@ -4,6 +4,7 @@ import xlsx from 'xlsx'
 
 export const addIncome = async (req,res)=>{
     const userId = req.body.userId;
+    console.log(req.body.userId);
     try {
         const {icon,source,amount,date} = req.body;
 

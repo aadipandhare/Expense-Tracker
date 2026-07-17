@@ -30,7 +30,7 @@ export const Income = () => {
       return;
     }
 
-    if (!amount || isNaN(amount) || Number(amount)) {
+    if (!amount || isNaN(amount) || Number(amount) <=0 ) {
       toast.error("Amount should be valid number greater than 0");
       return;
     }
@@ -41,7 +41,8 @@ export const Income = () => {
     }
 
     try {
-      await axiosInstance.post(API_PATHS.INCOME.GET_INCOME, {
+      await axiosInstance.post(API_PATHS.INCOME.ADD_INCOME, {
+        userId: "69d9397de7192debe3fad404",
         source,
         amount,
         date,

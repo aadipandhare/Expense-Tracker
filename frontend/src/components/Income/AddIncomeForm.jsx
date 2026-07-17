@@ -11,8 +11,25 @@ const [income, setIncome] = useState({
     icon: "",
     date :""
 })
+const [error,setError] = useState("");
 
-const handleChange =(key, value) => setIncome({...income, [key]: value})
+const handleChange =(key, value) => {setIncome({...income, [key]: value})
+    if (key === "amount") {
+    setError("");
+  }};
+
+
+// const handleSubmit=()=>{
+//     const amount = Number(income.amount);
+
+//     if(isNaN(amount) || amount <=0){
+//             setError("Amount should be a valid number greater than 0");
+//             return;
+//     }
+
+//     setError("")
+//     onAddIncome(income)
+// }
 
     return (
     <div className='p-3'>
@@ -36,7 +53,10 @@ const handleChange =(key, value) => setIncome({...income, [key]: value})
             onChange={({target}) => handleChange("amount", target.value)}
             label="Income Amount"
             type ="number"
-        />
+         />
+          {/* {error && (
+                <p className='text-red-500 text-sm mt-1'>{error}</p>
+            )} */}
 
         <Input 
             value={income.date}
@@ -51,6 +71,7 @@ const handleChange =(key, value) => setIncome({...income, [key]: value})
                     className='add-btn add-btn'
                     type='button'
                     onClick={()=>onAddIncome(income)}
+                    // onClick={handleSubmit}
             >
                 Add Income
             </button>

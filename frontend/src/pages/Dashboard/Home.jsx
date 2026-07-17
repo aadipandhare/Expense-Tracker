@@ -23,14 +23,15 @@ export const Home = () => {
   const navigate = useNavigate();
 
   const [dashboardData,setDashboardData] = useState(null)
-  const [loading,setLoading] = useState(false)
+  const [loading,setLoading] = useState(true)
+  // const [loading,setLoading] = useState(false)
 
 
   const fetchDashBoardData= async ()=>{
 
-    if(loading) return;
+    // if(loading) return;
 
-    setLoading(true)
+    // setLoading(true)
     try {
 
       const response = await axiosInstance.get(API_PATHS.DASHBOARD.GET_DATA);
@@ -58,6 +59,21 @@ useEffect(() => {
 
 
 
+if (loading) {
+  return (
+    <DashboardLayout activeMenu="Dashboard">
+      <div className="h-[80vh] flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+          <p className="mt-4 text-gray-500">Loading Dashboard...</p>
+        </div>
+      </div>
+    </DashboardLayout>
+  );
+}
+
+
+
 
   
   return (
@@ -75,13 +91,13 @@ useEffect(() => {
             icon={<IoWallet />}
             label="Total Income"
             value={addthousandSeparator(dashboardData?.totalIncome || 0)}
-            color="bg-orange-500"
+            color="bg-green-300"
           />
           <InfoCard
             icon={<LuHandCoins />}
             label="Total Expense"
             value={addthousandSeparator(dashboardData?.totalExpense || 0)}
-            color=""
+            color="bg-red-400"
           />
         </div>
 
